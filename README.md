@@ -95,14 +95,14 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 - Para configurar el balanceo de carga entre los servidores back-end, es necesario agregar un VirtualHost como se muestra a continuación:
 ```bash
 <VirtualHost *:80>
-<Proxy balancer://clusterServicios>
-BalancerMember http://192.168.50.10
-BalancerMember http://192.168.50.20
-ProxySet lbmethod=bytraffic
-</Proxy>
-ProxyPreserveHost On
-ProxyPass "/" "balancer://clusterServicios/"
-ProxyPassReverse "/" "balancer://clusterServicios/"
+    <Proxy balancer://clusterServicios>
+        BalancerMember http://192.168.50.10
+        BalancerMember http://192.168.50.20
+        ProxySet lbmethod=bytraffic
+    </Proxy>
+    ProxyPreserveHost On
+    ProxyPass "/" "balancer://clusterServicios/"
+    ProxyPassReverse "/" "balancer://clusterServicios/"
 </VirtualHost>
 ```
 - Ahora guardamos los cambios y reiniciamos el servicio:
