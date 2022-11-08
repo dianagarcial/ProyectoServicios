@@ -1,0 +1,10 @@
+config:
+  target: "http://192.168.50.30" # default target
+  phases:
+    - arrivalRate: 25
+      duration: 1
+scenarios:
+- name: Create record
+  flow:
+    - get:
+        url: "/"     
